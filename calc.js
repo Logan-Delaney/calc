@@ -32,100 +32,149 @@ let displayNum = "";
 // Math functions
 
 function addNums(num1, num2) {
-    return num1 + num2;
+  return num1 + num2;
 }
 
 function subtractNums(num1, num2) {
-    return num1 - num2;
+  return num1 - num2;
 }
 
 function multiplyNums(num1, num2) {
-    return num1 * num2;
+  return num1 * num2;
 }
 
 function divideNums(num1, num2) {
-    return num1 / num2;
+  return num1 / num2;
 }
 
 // Screen value
 
 function changeScreenValue(currentValue, valueToAdd) {
-    if (currentValue.length == 14){
-        displayNum = "Out of Space!!";
-        screen.innerHTML = displayNum;
-        console.log(displayNum);
-    }
-
-    else {
-        displayNum += valueToAdd;
-        screen.innerHTML = displayNum;
-        console.log(displayNum);
-    }
+  if (currentValue.length == 14) {
+    displayNum = "Out of Space!!";
+    screen.innerHTML = displayNum;
+    console.log(displayNum);
+  } else {
+    displayNum += valueToAdd;
+    screen.innerHTML = Math.round(displayNum * 100) / 100;
+    console.log(displayNum);
+  }
 }
 
 // Operator Function
 
 function getOperator(opValue) {
-    numValue = displayNum;
-    console.log(numValue);
-    screen.innerHTML = numValue;
-    displayNum = "";
-    operator = "";
-    operator += opValue;
-    console.log(operator);
+  numValue = displayNum;
+  console.log(numValue);
+  screen.innerHTML = Math.round(numValue * 100) / 100;
+  displayNum = "";
+  operator = "";
+  operator += opValue;
+  console.log(operator);
 }
 
 // Compute Function
 
-function computeCalc(value1, value2, operator){
-    if (operator == "plus") 
-        {
-            displayNum = parseInt(value1) + parseInt(value2);
-            console.log(displayNum)
-            screen.innerHTML = displayNum;
-        }
+function computeCalc(value1, value2, operator) {
+  if (operator == "plus") {
+    displayNum = parseFloat(value1) + parseFloat(value2);
+    console.log(displayNum);
+    screen.innerHTML = Math.round(displayNum * 100) / 100;
+  } else if (operator == "minus") {
+    displayNum = parseFloat(value1) - parseFloat(value2);
+    console.log(displayNum);
+    screen.innerHTML = Math.round(displayNum * 100) / 100;
+  } else if (operator == "multiply") {
+    displayNum = parseFloat(value1) * parseFloat(value2);
+    console.log(displayNum);
+    screen.innerHTML = Math.round(displayNum * 100) / 100;
+  } else if (operator == "divide") {
+    displayNum = parseFloat(value1) / parseFloat(value2);
+    console.log(displayNum);
+    screen.innerHTML = Math.round(displayNum * 100) / 100
+} else if (operator == "") {
+    console.log("no operation")
+  } else {
+    numValue = displayNum;
+    console.log(numValue);
+    screen.innerHTML = Math.round(numValue * 100) / 100;
+    displayNum = "";
+  }
 }
 // Number Buttons
 
 oneButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 1);
-})
+  changeScreenValue(displayNum, 1);
+});
 
 twoButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 2);
-})
+  changeScreenValue(displayNum, 2);
+});
 
 threeButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 3);
-})
+  changeScreenValue(displayNum, 3);
+});
 
 fourButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 4);
-})
+  changeScreenValue(displayNum, 4);
+});
 
 fiveButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 5);
-})
+  changeScreenValue(displayNum, 5);
+});
 
 sixButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 6);
-})
+  changeScreenValue(displayNum, 6);
+});
 
 sevenButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 7);
-})
+  changeScreenValue(displayNum, 7);
+});
 
 eightButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 8);
-})
+  changeScreenValue(displayNum, 8);
+});
 
 nineButton.addEventListener("click", () => {
-    changeScreenValue(displayNum, 9);
-})
+  changeScreenValue(displayNum, 9);
+});
+
+zeroButton.addEventListener("click", () => {
+  changeScreenValue(displayNum, 0);
+});
 
 // Operator Buttons
 
 plusButton.addEventListener("click", () => {
-    computeCalc(displayNum, numValue, operator);
-    getOperator("plus");
-})
+  computeCalc(displayNum, numValue, operator);
+  getOperator("plus");
+});
+
+minusButton.addEventListener("click", () => {
+  computeCalc(numValue, displayNum, operator);
+  getOperator("minus");
+});
+
+multiplyButton.addEventListener("click", () => {
+  computeCalc(numValue, displayNum, operator);
+  getOperator("multiply");
+});
+
+divideButton.addEventListener("click", () => {
+  computeCalc(numValue, displayNum, operator);
+  getOperator("divide");
+});
+
+equalsButton.addEventListener("click", () => {
+  computeCalc(numValue, displayNum, operator);
+  operator = "";
+});
+
+// Other Buttons
+
+acButton.addEventListener("click", () => {
+    displayNum = "";
+    numValue = "";
+    operator = "";
+    screen.innerHTML = 0
+  });
