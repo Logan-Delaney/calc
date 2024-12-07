@@ -146,24 +146,28 @@ zeroButton.addEventListener("click", () => {
 // Operator Buttons
 
 plusButton.addEventListener("click", () => {
+  if (displayNum != ""){
   computeCalc(displayNum, numValue, operator);
   getOperator("plus");
-});
+}});
 
 minusButton.addEventListener("click", () => {
+  if (displayNum != ""){
   computeCalc(numValue, displayNum, operator);
   getOperator("minus");
-});
+}});
 
 multiplyButton.addEventListener("click", () => {
+  if (displayNum != ""){
   computeCalc(numValue, displayNum, operator);
   getOperator("multiply");
-});
+}});
 
 divideButton.addEventListener("click", () => {
+  if (displayNum != ""){
   computeCalc(numValue, displayNum, operator);
   getOperator("divide");
-});
+}});
 
 equalsButton.addEventListener("click", () => {
   computeCalc(numValue, displayNum, operator);
