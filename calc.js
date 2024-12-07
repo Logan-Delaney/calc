@@ -20,11 +20,11 @@ const decimalButton = document.querySelector("#decimal");
 const zeroButton = document.querySelector("#zero");
 const posNegButton = document.querySelector("#posneg");
 const equalsButton = document.querySelector("#equals");
-const screen = document.querySelector("#screen")
+const screen = document.querySelector("#screen");
 
 // declare JS variables
 
-let inputNum1 = 0;
+let numValue = 0;
 let inputNum2 = 0;
 let operator = "";
 let displayNum = "";
@@ -50,13 +50,82 @@ function divideNums(num1, num2) {
 // Screen value
 
 function changeScreenValue(currentValue, valueToAdd) {
-    if (currentValue.length == 15){
-        displayNum = "Out of Space"
+    if (currentValue.length == 14){
+        displayNum = "Out of Space!!";
+        screen.innerHTML = displayNum;
+        console.log(displayNum);
+    }
+
+    else {
+        displayNum += valueToAdd;
+        screen.innerHTML = displayNum;
+        console.log(displayNum);
     }
 }
 
+// Operator Function
+
+function getOperator(opValue) {
+    numValue = displayNum;
+    console.log(numValue);
+    screen.innerHTML = numValue;
+    displayNum = "";
+    operator = "";
+    operator += opValue;
+    console.log(operator);
+}
+
+// Compute Function
+
+function computeCalc(value1, value2, operator){
+    if (operator == "plus") 
+        {
+            displayNum = parseInt(value1) + parseInt(value2);
+            console.log(displayNum)
+            screen.innerHTML = displayNum;
+        }
+}
+// Number Buttons
+
 oneButton.addEventListener("click", () => {
-    displayNum += 1;
-    console.log(displayNum);
-    screen.innerHTML = displayNum;
+    changeScreenValue(displayNum, 1);
+})
+
+twoButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 2);
+})
+
+threeButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 3);
+})
+
+fourButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 4);
+})
+
+fiveButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 5);
+})
+
+sixButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 6);
+})
+
+sevenButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 7);
+})
+
+eightButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 8);
+})
+
+nineButton.addEventListener("click", () => {
+    changeScreenValue(displayNum, 9);
+})
+
+// Operator Buttons
+
+plusButton.addEventListener("click", () => {
+    computeCalc(displayNum, numValue, operator);
+    getOperator("plus");
 })
