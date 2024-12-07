@@ -91,9 +91,9 @@ function computeCalc(value1, value2, operator) {
   } else if (operator == "divide") {
     displayNum = parseFloat(value1) / parseFloat(value2);
     console.log(displayNum);
-    screen.innerHTML = Math.round(displayNum * 100) / 100
-} else if (operator == "") {
-    console.log("no operation")
+    screen.innerHTML = Math.round(displayNum * 100) / 100;
+  } else if (operator == "") {
+    console.log("no operation");
   } else {
     numValue = displayNum;
     console.log(numValue);
@@ -173,8 +173,8 @@ equalsButton.addEventListener("click", () => {
 // Other Buttons
 
 acButton.addEventListener("click", () => {
-    displayNum = "";
-    numValue = "";
-    operator = "";
-    screen.innerHTML = 0
-  });
+  displayNum = "";
+  numValue = "";
+  operator = "";
+  screen.innerHTML = 0;
+});
