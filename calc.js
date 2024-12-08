@@ -47,7 +47,7 @@ function divideNums(num1, num2) {
   return num1 / num2;
 }
 
-// Screen value
+// Screen value functions
 
 function changeScreenValue(currentValue, valueToAdd) {
   if (currentValue.length == 14) {
@@ -56,9 +56,30 @@ function changeScreenValue(currentValue, valueToAdd) {
     console.log(displayNum);
   } else {
     displayNum += valueToAdd;
-    screen.innerHTML = Math.round(displayNum * 100) / 100;
+    // screen.innerHTML = Math.round(displayNum * 100) / 100;
+    screen.innerHTML = displayNum;
     console.log(displayNum);
   }
+}
+
+function addNegative(currentValue) {
+  displayNum = "-" + currentValue;
+  screen.innerHTML = displayNum;
+}
+
+function removeNegative(currentValue) {
+  displayNum = currentValue.substring(1);
+  screen.innerHTML = displayNum;
+}
+
+function backSpace(currentValue) {
+  displayNum = currentValue.substring(0, currentValue.length - 1);
+  screen.innerHTML = displayNum;
+}
+
+function percent(currentValue) {
+  displayNum = currentValue / 100;
+  screen.innerHTML = Math.round(displayNum * 100) / 100;
 }
 
 // Operator Function
@@ -146,28 +167,32 @@ zeroButton.addEventListener("click", () => {
 // Operator Buttons
 
 plusButton.addEventListener("click", () => {
-  if (displayNum != ""){
-  computeCalc(displayNum, numValue, operator);
-  getOperator("plus");
-}});
+  if (displayNum != "") {
+    computeCalc(displayNum, numValue, operator);
+    getOperator("plus");
+  }
+});
 
 minusButton.addEventListener("click", () => {
-  if (displayNum != ""){
-  computeCalc(numValue, displayNum, operator);
-  getOperator("minus");
-}});
+  if (displayNum != "") {
+    computeCalc(numValue, displayNum, operator);
+    getOperator("minus");
+  }
+});
 
 multiplyButton.addEventListener("click", () => {
-  if (displayNum != ""){
-  computeCalc(numValue, displayNum, operator);
-  getOperator("multiply");
-}});
+  if (displayNum != "") {
+    computeCalc(numValue, displayNum, operator);
+    getOperator("multiply");
+  }
+});
 
 divideButton.addEventListener("click", () => {
-  if (displayNum != ""){
-  computeCalc(numValue, displayNum, operator);
-  getOperator("divide");
-}});
+  if (displayNum != "") {
+    computeCalc(numValue, displayNum, operator);
+    getOperator("divide");
+  }
+});
 
 equalsButton.addEventListener("click", () => {
   computeCalc(numValue, displayNum, operator);
@@ -181,4 +206,32 @@ acButton.addEventListener("click", () => {
   numValue = "";
   operator = "";
   screen.innerHTML = 0;
+});
+
+percentButton.addEventListener("click", () => {
+  percent(displayNum);
+});
+
+backspaceButton.addEventListener("click", () => {
+  if (displayNum.length > 1) {
+    backSpace(displayNum);
+  } else {
+    console.log("nope");
+  }
+});
+
+posNegButton.addEventListener("click", () => {
+  if (displayNum.charAt(0) == "-") {
+    removeNegative(displayNum);
+  } else {
+    addNegative(displayNum);
+  }
+});
+
+decimalButton.addEventListener("click", () => {
+  if (displayNum.includes(".")) {
+    console.log("nope");
+  } else {
+    changeScreenValue(displayNum, ".");
+  }
 });
