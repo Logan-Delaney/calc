@@ -78,7 +78,7 @@ function backSpace(currentValue) {
 }
 
 function percent(currentValue) {
-  displayNum = currentValue / 100;
+  displayNum = parseFloat(currentValue) / 100;
   screen.innerHTML = Math.round(displayNum * 100) / 100;
 }
 
